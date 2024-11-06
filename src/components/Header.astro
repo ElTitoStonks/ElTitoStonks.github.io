@@ -1,0 +1,79 @@
+---
+import Buger from "./Buger.astro";
+import Cross from "./Cross.astro";
+import DownArrow from "./DownArrow.astro";
+---
+<header class="fixed w-full h-32 bg-[#444444] flex flex-row">
+    <h1 class="text-[#FAFAFA] font-roboto text-3xl font-bold flex md:justify-center items-center flex-grow ml-4 -z-10">
+        GYM EVOLUTION
+    </h1>
+    <!-- When display is < md -->
+    <nav class="md:flex-grow md:flex md:items-center md:justify-center hidden opacity-80 ">
+        <ul class="text-xl flex content-center justify-center  gap-10">
+            <li class="cursor-pointer font-bold text-[#FAFAFA] hover:text-steel-blue-300 transition-all duration-300 ease-in-out">
+                Inicio
+            </li>
+
+            <li class="cursor-pointer font-bold text-[#FAFAFA] hover:text-steel-blue-300 transition-all duration-300 ease-in-out">
+                Tarifas
+            </li>
+
+            <li class="cursor-pointer font-bold text-[#FAFAFA] hover:text-steel-blue-300 transition-all duration-300 ease-in-out">
+                Horarios
+            </li>
+
+            <li class="cursor-pointer font-bold text-[#FAFAFA] hover:text-steel-blue-300 transition-all duration-300 ease-in-out">
+                Contacto
+            </li>
+        </ul>
+    </nav>
+
+    <!-- When display is > md -->
+     <nav id="menu" class="flex flex-col md:hidden hidden absolute w-dvw h-dvh opacity-100 -z-10 animate-fade-right animate-duration-500">
+        <ul class="text-xl flex flex-col items-center justify-center w-full h-full gap-10 bg-[#666] ">
+            <li class="cursor-pointer font-bold text-[#FAFAFA] hover:text-steel-blue-300 transition-all duration-300 ease-in-out">
+                Inicio
+            </li>
+        
+            <li class="cursor-pointer font-bold text-[#FAFAFA] hover:text-steel-blue-300 transition-all duration-300 ease-in-out">
+                Tarifas
+            </li>
+
+            <li class="z-50 cursor-pointer font-bold text-[#FAFAFA] hover:text-steel-blue-300 transition-all duration-300 ease-in-out">
+                Horarios
+            </li>
+
+            <li class="cursor-pointer font-bold text-[#FAFAFA] hover:text-steel-blue-300 transition-all duration-300 ease-in-out">
+                Contacto
+            </li>
+        </ul>
+    </nav> 
+    
+    <span id="burger" class="w-11 mt-10 mr-10 md:hidden">
+        <Buger />
+    </span>
+    <span id="cross" class="w-11 hidden mt-10 mr-10 md:hidden ">
+        <Cross />
+    </span>
+</header>
+
+<script>
+    let burger = document.querySelector("#burger");
+    let menu = document.querySelector("#menu");
+    let arrow = document.querySelector("#arrow");
+    let cross = document.querySelector("#cross");
+    burger?.addEventListener("click", () => {
+        menu?.classList.toggle("hidden");
+        arrow?.classList.toggle("hidden");
+        cross?.classList.toggle("hidden");
+        burger?.classList.toggle("hidden");
+    });
+
+    cross?.addEventListener("click",() => {
+        menu?.classList.toggle("hidden");
+        arrow?.classList.toggle("hidden");
+        cross?.classList.toggle("hidden");
+        burger?.classList.toggle("hidden");
+    });
+
+</script>
