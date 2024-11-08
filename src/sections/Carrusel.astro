@@ -1,0 +1,152 @@
+---
+import ArrowLeft from "../components/ArrowLeft.astro";
+import ArrowRigth from "../components/ArrowRigth.astro";
+---
+
+<section
+    class="w-full h-[80dvh] bg-steel-blue-950 flex justify-center items-center relative"
+>
+    <span
+        class="progress absolute bottom-8 w-full z-50 flex justify-center gap-1"
+        ><hr class="w-1 border-8 rounded-full text-steel-blue-50" />
+        <hr class="w-1 border-8 rounded-full" /></span
+    >
+    <div id="box" class="bg-[transparent] w-full h-full relative">
+        <!-- Img -->
+        <a
+            href="/"
+            class="w-full h-full caja animate-fade-left animate-duration-300 relative flex justify-center cursor-pointer"
+        >
+            <div
+                class="w-1/2 absolute text-[#FAFAFA] font-roboto top-1/2 left-20"
+            >
+                <h2 class="text-4xl font-bold mb-3">
+                    Sala de Musculación<br /> Donde los Hierros se Convierten en
+                    Héroes
+                </h2>
+                <p class="absolute w">
+                    Aquí es donde los débiles se vuelven fuertes y los fuertes,
+                    imparables. 🔥 Prepárate para sudar, levantar y romper tus
+                    propios récords. ¡Los músculos no se hacen solos! 🏋️‍♂️💥
+                </p>
+            </div>
+            <img
+                class="w-full h-full object-cover"
+                src="../../public/Mancuerna.webp"
+                alt="Imagen de gimnasio"
+                loading="eager"
+            />
+        </a>
+
+        <a
+            href="/"
+            class="w-full h-full caja animate-fade-left animate-duration-300 relative flex justify-center cursor-pointer"
+        >
+            <div
+                class="w-1/2 absolute text-[#FAFAFA] font-roboto top-1/2 right-20"
+            >
+                <h2 class="text-4xl font-bold mb-3">
+                    Clase de Zumba <br /> Bailando se Quema Mejor
+                </h2>
+                <p class="absolute w">
+                    Siente el ritmo, mueve el cuerpo y olvídate del estrés.
+                    ¡Aquí se viene a sudar, a reír y a quemar calorías al son de
+                    los mejores hits! 🕺💃
+                </p>
+            </div>
+            <img
+                class="w-full h-full object-cover"
+                src="../../public/Zumba.webp"
+                alt="Imagen de gimnasio"
+                loading="eager"
+            />
+        </a>
+
+        <a
+            href="/"
+            class="w-full h-full caja animate-fade-left animate-duration-300 relative flex justify-center cursor-pointer"
+        >
+            <div
+                class="w-1/2 absolute text-[#FAFAFA] font-roboto top-1/2 left-20"
+            >
+                <h2 class="text-4xl font-bold mb-3">
+                    Sala de Spinning <br /> Pedalea al Ritmo del Éxito
+                </h2>
+                <p class="absolute w">
+                    Prepárate para una montaña rusa de energía y adrenalina.
+                    Subimos, bajamos y lo damos todo al ritmo de la música.
+                    ¡Vamos a quemar calorías como si no hubiera mañana! 🔥💦
+                </p>
+            </div>
+            <img
+                class="w-full h-full object-cover"
+                src="../../public/spinning.webp"
+                alt="Imagen de gimnasio"
+                loading="eager"
+            />
+        </a>
+
+        <a
+            href="/"
+            class="w-full h-full caja animate-fade-left animate-duration-300 relative flex justify-center cursor-pointer"
+        >
+            <div
+                class="w-1/2 absolute text-[#FAFAFA] font-roboto top-1/2 right-20"
+            >
+                <h2 class="text-4xl font-bold mb-3">
+                    Sala de Boxeo <br /> Donde los Guantes Hablan Más Fuerte
+                </h2>
+                <p class="absolute w">
+                    Prepárate para soltar golpes, liberar estrés y sentirte como
+                    un campeón. Aquí no solo se entrena el cuerpo, ¡se fortalece
+                    la mente! 🥇🔥
+                </p>
+            </div>
+            <img
+                class="w-full h-full object-cover"
+                src="../../public/boxeo.webp"
+                alt="Imagen de gimnasio"
+                loading="eager"
+            />
+        </a>
+
+        <!-- Controls -->
+        <span id="izquierda" class="w-20 z-10 absolute top-1/2">
+            <ArrowLeft />
+        </span>
+
+        <span id="derecha" class="w-20 z-10 absolute top-1/2 right-0">
+            <ArrowRigth />
+        </span>
+    </div>
+</section>
+<script>
+    let leftArrow = document.querySelector("#izquierda");
+    let rigthArrow = document.querySelector("#derecha");
+    let images = document.querySelectorAll(".caja");
+    let balls = document.querySelectorAll(".progress");
+    let counterIMG = 0;
+
+    function showFirstIMG(index: number) {
+        images.forEach((image, i) => {
+            image.classList.toggle("hidden", i !== index);
+        });
+    }
+
+    setInterval(() => {
+        counterIMG = (counterIMG - 1 + images.length) % images.length;
+        showFirstIMG(counterIMG);
+    }, 7000);
+
+    leftArrow?.addEventListener("click", () => {
+        counterIMG = (counterIMG - 1 + images.length) % images.length;
+        showFirstIMG(counterIMG);
+    });
+
+    rigthArrow?.addEventListener("click", () => {
+        counterIMG = (counterIMG - 1 + images.length) % images.length;
+        showFirstIMG(counterIMG);
+    });
+
+    showFirstIMG(counterIMG);
+</script>
